@@ -3,7 +3,6 @@ from pymongo import MongoClient
 
 def process(inputfile):
     connection = MongoClient()
-
     db = connection.get_database('geoip')
     collection = db.get_collection('geoip')
     with open(inputfile, 'rb') as csvfile:
@@ -16,14 +15,13 @@ def process(inputfile):
                     "country_code":row[2],
                     "country":row[3],
                     "region":row[4],
-                    "city" = row[5],
-                    "lat" = row[6],
-                    "lng" = row[7],
-                    "zipcode" = row[8],
-                    "timezone" = row[9]
+                    "city" : row[5],
+                    "lat" : row[6],
+                    "lng" : row[7],
+                    "zipcode" : row[8],
+                    "timezone" : row[9]
                 })
             print "Insert: ", data
-
 
 if __name__ == '__main__':
     if len(sys.argv) != 2:
